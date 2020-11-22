@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM alpine:3.12
 RUN apt update
 RUN apt install default-jdk -y
 RUN apt install tomcat9 -y
