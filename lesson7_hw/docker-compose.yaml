@@ -10,10 +10,10 @@ services:
       context: ./tomcat9
     volumes:
       - /srv:/root/boxfuse-sample-java-war-hello/target
-    container_name: build_app
+    container_name: bld
 
   prod:                       # Run Application
     image: tomcat:9.0.40-jdk8-adoptopenjdk-openj9
     volumes:
       - /srv:/usr/local/tomcat/webapps
-      container_name: prod
+    container_name: pr
