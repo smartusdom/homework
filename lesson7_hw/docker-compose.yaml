@@ -21,4 +21,4 @@ services:
     container_name: PROD
 
   volumes:
-    - data_volume:  
+    data_volume:  
