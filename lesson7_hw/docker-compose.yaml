@@ -5,6 +5,13 @@
 #по размеру.
 version: '3.8'
 services:
-  build_app:                    
-    build:                    # Build Application
+  build_app:                  # Build Application  
+    build:                    
       context: ./tomcat9
+    volumes:
+      - /srv:/root/boxfuse-sample-java-war-hello/target
+
+  prod:                       # Run Application
+    image: tomcat:9.0.40-jdk8-adoptopenjdk-openj9
+    volumes:
+      - /srv:/usr/local/tomcat/webapps
