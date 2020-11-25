@@ -19,7 +19,7 @@ services:
     volumes:
       - data_volume:/usr/local/tomcat/webapps
     ports:
-      - "8080:80"
+      - "80:8080"
     container_name: PROD
   
 volumes:
