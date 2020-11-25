@@ -22,5 +22,5 @@ services:
       - "8080:80"
     container_name: PROD
   
-  volumes:
-    data_volume:
+volumes:
+  data_volume:
