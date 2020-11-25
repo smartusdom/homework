@@ -9,7 +9,7 @@ services:
     build:                    
       context: ./tomcat9
     volumes:
-      - data_volume:/root/boxfuse-sample-java-war-hello/target
+      - data_volume:/root/boxfuse-sample-java-war-hello/target/
     container_name: APP
 
   prod:                       # Run Application
