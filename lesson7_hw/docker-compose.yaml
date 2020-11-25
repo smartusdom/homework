@@ -13,9 +13,8 @@ services:
     container_name: APP
 
   prod:                       # Run Application
-    image: tomcat:9.0.40-jdk8-adoptopenjdk-openj9
-    links:
-      - app
+    #image: tomcat:9.0.40-jdk8-adoptopenjdk-openj9
+    image: tomcat:jre8-alpine
     volumes:
       - data_volume:/usr/local/tomcat/webapps
     ports:
