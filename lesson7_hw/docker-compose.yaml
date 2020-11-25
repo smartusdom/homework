@@ -9,7 +9,7 @@ services:
     build:                    
       context: ./tomcat9
     links:
-      prod
+      - prod
     volumes:
       - /srv:/srv
     container_name: APP
@@ -17,7 +17,7 @@ services:
   prod:                       # Run Application
     image: tomcat:9.0.40-jdk8-adoptopenjdk-openj9
     links:
-      app
+      - app
     volumes:
       - /srv:/usr/local/tomcat/webapps
     ports:
