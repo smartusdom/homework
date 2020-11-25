@@ -9,7 +9,7 @@ services:
     build:                    
       context: ./tomcat9
     volumes:
-      - /srv:/srv
+      - data_volume:/srv
     container_name: APP
 
   prod:                       # Run Application
@@ -17,7 +17,10 @@ services:
     links:
       - app
     volumes:
-      - /srv:/usr/local/tomcat/webapps
+      - data_volume:/usr/local/tomcat/webapps
     ports:
       - "8080:80"
     container_name: PROD
+  
+  volumes:
+    data_volume:
