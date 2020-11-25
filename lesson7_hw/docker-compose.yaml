@@ -9,16 +9,13 @@ services:
     build:                    
       context: ./tomcat9
     volumes:
-      - data_volume:/root/boxfuse-sample-java-war-hello/target/
+      - /srv:/srv
     container_name: APP
 
   prod:                       # Run Application
     image: tomcat:9.0.40-jdk8-adoptopenjdk-openj9
     volumes:
-      - data_volume:/usr/local/tomcat/webapps
+      - /srv:/usr/local/tomcat/webapps
     ports:
       - "8080:80"
     container_name: PROD
-
-volumes:
-  data_volume:
