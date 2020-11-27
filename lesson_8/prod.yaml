@@ -20,9 +20,9 @@
        state: present
 
     - name: Ensure nginx package is present
-        apt:
-         name: nginx
-         state: absent
+      apt:
+       name: nginx
+       state: absent
     
   
 # Production Server       
