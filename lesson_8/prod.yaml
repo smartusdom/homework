@@ -19,6 +19,10 @@
         name: maven
         state: present
 
+    - name: Stop service nginx, if started
+      service:
+        name: nginx
+        state: stopped
     - name: remove nginx package is present
       apt:
         name: nginx
@@ -36,6 +40,11 @@
         name: tomcat9
         update_cache: yes
     
+    - name: Stop service postgresql, if started
+      service:
+        name: postgresql
+        state: stopped
+
     - name: remove postgresql package is present
       apt:
         name: postgresql
