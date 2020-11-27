@@ -1,0 +1,47 @@
+---
+# Development Server
+  - name: dev server provisioning
+    hosts: dev
+    become: yes
+  
+    tasks:
+    - name: Install Maven
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+        - default-jdk
+        - maven
+
+    - name: Ensure maven package is present
+      apt:
+       name: maven
+       state: present
+
+    - name: Ensure nginx package is present
+        apt:
+         name: nginx
+         state: absent
+    
+  
+# Production Server       
+  - name: prod server provisioning
+    hosts: prod
+    become: yes
+  
+    tasks:
+    - name: Update repositories cache and install "TomCat" package
+      apt:
+        name: tomcat9
+        update_cache: yes
+    
+    - name: Ensure postgresql package is present
+      apt:
+       name: postgresql
+       state: absent
+    
+    - name: Ensure tomcat service is started
+      service:
+       name: tomcat
+       state: started
