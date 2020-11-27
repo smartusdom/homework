@@ -16,13 +16,13 @@
 
     - name: Ensure maven package is present
       apt:
-       name: maven
-       state: present
+        name: maven
+        state: present
 
-    - name: Ensure nginx package is present
+    - name: remove nginx package is present
       apt:
-       name: nginx
-       state: absent
+        name: nginx
+        state: absent
     
   
 # Production Server       
@@ -36,12 +36,12 @@
         name: tomcat9
         update_cache: yes
     
-    - name: Ensure postgresql package is present
+    - name: remove postgresql package is present
       apt:
-       name: postgresql
-       state: absent
+        name: postgresql
+        state: absent
     
-    - name: Ensure tomcat service is started
+    - name: Ensure tomcat9 service is started
       service:
-       name: tomcat
-       state: started
+        name: tomcat9
+        state: started
