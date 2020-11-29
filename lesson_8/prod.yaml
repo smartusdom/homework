@@ -39,6 +39,11 @@
       args:
         chdir: /root/boxfuse/
   
+    - name: Send WAR file to PROD node
+      shell: rsync -avz hello-1.0.war root@54.93.235.89:/usr/local/tomcat/webapps/hello-1.0.war
+      args:
+        chdir: /root/boxfuse/
+
 # Production Server       
   - name: prod server provisioning
     hosts: prod
