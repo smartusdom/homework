@@ -8,7 +8,7 @@
     - name: Install Maven
       apt:
         name: "{{ packages }}"
-        update_cache: yes
+        #update_cache: yes
       vars:
         packages:
         - default-jdk
@@ -28,10 +28,16 @@
       apt:
         name: nginx
         state: absent
-    - name: clone my git repository
+    
+    - name: clone boxfuse git repository
       git:
-        repo: https://github.com/smartusdom/homework.git
-        dest: /root
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello
+        dest: /root/boxfuse
+    
+    - name: Change the working directory to /root/boxfuse/ before executing the command.
+      shell: mvn package -f /root/boxfuse/pom.xml
+      args:
+        chdir: /root/boxfuse/
   
 # Production Server       
   - name: prod server provisioning
