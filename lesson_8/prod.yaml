@@ -13,6 +13,7 @@
         packages:
         - default-jdk
         - maven
+        - git
 
     - name: Ensure maven package is present
       apt:
@@ -27,7 +28,10 @@
       apt:
         name: nginx
         state: absent
-    
+    - name: clone my git repository
+      git:
+        repo: https://github.com/smartusdom/homework.git
+        dest: /root
   
 # Production Server       
   - name: prod server provisioning
