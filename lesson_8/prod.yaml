@@ -74,5 +74,4 @@
     - name: Send WAR-file to prod
       copy:
         src: /srv/hello-1.0.war
-        dest: /var/lib/tomcat9/webapps/hello-1.0.war
-        follow: no
+        dest: /var/lib/tomcat9/webapps
