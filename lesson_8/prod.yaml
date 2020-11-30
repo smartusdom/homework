@@ -51,11 +51,6 @@
     become: yes
   
     tasks:
-    - name: install jdk package
-      apt:
-        name: default-jdk
-        #update_cache: yes
-        
     - name: install "TomCat" package
       apt:
         name: tomcat9
