@@ -39,10 +39,11 @@
       args:
         chdir: /root/boxfuse/
   
-    - name: Send WAR file to PROD node
-      shell: rsync -avz hello-1.0.war root@54.93.235.89:/var/lib/tomcat9/webapps/hello-1.0.war
-      args:
-        chdir: /root/boxfuse/
+    - name: Fetch WAR file to HOST
+      fetch:
+        src: /root/boxfuse/target/hello-1.0.war
+        dest: /srv/hello-1.0.war
+        flat: yes
 
 # Production Server       
   - name: prod server provisioning
@@ -69,3 +70,9 @@
       service:
         name: tomcat9
         state: started
+    
+    - name: Send WAR-file to prod
+      copy:
+        src: /srv/hello-1.0.war
+        dest: /var/lib/tomcat9/webapps/hello-1.0.war
+        follow: yes
