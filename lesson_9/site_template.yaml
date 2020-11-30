@@ -18,5 +18,5 @@
         - restart nginx
     
     handlers:
-      - restart nginx
-        service: name=nginx state=restarted
+      - name : restart nginx
+        service: restart nginx state=restarted
