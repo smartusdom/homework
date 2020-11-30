@@ -51,10 +51,14 @@
     become: yes
   
     tasks:
-    - name: Update repositories cache and install "TomCat" package
+    - name: install jdk package
+      apt:
+        name: default-jdk
+        #update_cache: yes
+        
+    - name: install "TomCat" package
       apt:
         name: tomcat9
-        #update_cache: yes
     
     - name: Stop service postgresql, if started
       service:
