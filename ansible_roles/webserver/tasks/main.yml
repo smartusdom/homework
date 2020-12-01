@@ -8,3 +8,17 @@
   copy:
     src: /srv/hello-1.0.war
     dest: /var/lib/tomcat9/webapps
+
+- name: Allow OpenSSH
+  ufw:
+    rule: allow
+    name: OpenSSH
+        
+- name: Allow tomcat port 8080
+  ufw:
+    rule: allow
+    port: 8080
+
+- name: Enable UFW
+  ufw:
+    state: enabled
