@@ -17,6 +17,6 @@
       notify:
         - restart nginx
     
-    - handlers:
-        - name : restart nginx
-          service: name=nginx state=restarted
+    handlers:
+      - name : restart nginx
+        service: name=nginx state=restarted
