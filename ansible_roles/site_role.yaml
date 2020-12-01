@@ -1,0 +1,20 @@
+---
+- name: Web-servers configuration
+  hosts: web
+  become: yes
+
+  roles:
+    - common
+    - develop
+    - security
+
+- name: PROD configuration
+  hosts: db
+  become: yes
+
+  roles:
+    - common
+    - webserver
+    - security
+
+

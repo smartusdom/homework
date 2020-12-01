@@ -1,0 +1,14 @@
+---
+  - name: Install TomCat package
+    apt:
+      name: tomcat9
+  
+  - name: Ensure tomcat9 service is started
+    service:
+      name: tomcat9
+      state: started
+  
+  - name: Send WAR-file to Production Node
+    copy:
+      src: /srv/hello-1.0.war
+      dest: /var/lib/tomcat9/webapps

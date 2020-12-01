@@ -1,0 +1,10 @@
+---
+# tasks file for webserver
+- name: Install TomCat package
+  apt:
+    name: tomcat9
+
+- name: Send WAR-file to Production Node
+  copy:
+    src: /srv/hello-1.0.war
+    dest: /var/lib/tomcat9/webapps

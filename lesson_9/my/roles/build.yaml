@@ -1,0 +1,31 @@
+---
+  - name: Install Maven
+    apt:
+      name: "{{ packages }}"
+      #update_cache: yes
+    vars:
+      packages:
+      - default-jdk
+      - maven
+      - git
+
+  - name: Ensure maven package is present
+    apt:
+      name: maven
+      state: present
+
+  - name: Clone boxfuse git repository
+    git:
+      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello
+      dest: /srv/boxfuse
+  
+  - name: Build application
+    shell: mvn package -f /srv/boxfuse/pom.xml
+    args:
+      chdir: /srv/boxfuse/
+
+  - name: Fetch WAR file to HOST
+    fetch:
+      src: /srv/boxfuse/target/hello-1.0.war
+      dest: /srv/hello-1.0.war
+      flat: yes

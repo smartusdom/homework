@@ -1,0 +1,5 @@
+---
+# defaults file for develop
+repo_url: https://github.com/boxfuse/boxfuse-sample-java-war-hello
+source: /srv/app
+target: /srv/app/target
