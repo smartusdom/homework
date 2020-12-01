@@ -13,6 +13,6 @@
         state: started
     - name: replace
       lineinfile:
-        path: /etc/selinux/config
+        path: /var/www/html/index.html
         regexp: '^Welcome'
-        line: WOW=enforcing
+        line: WOW
