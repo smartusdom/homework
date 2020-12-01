@@ -13,10 +13,10 @@
         state: present
 
     - name: templating web
-      template: src={{ source_folder }}/index.j2 dest={{ dest_folder }}/index.html mode=055
+      template: src={{ source_folder }}/index.j2 dest={{ dest_folder }}/index.html mode=0555
       notify:
         - restart nginx
     
     handlers:
-    - name : restart nginx
-      service: name=nginx state=restarted
+     - name : restart nginx
+       service: name=nginx state=restarted
