@@ -11,8 +11,8 @@
       service:
         name: nginx
         state: started
-    - name: Ensure SELinux is set to enforcing mode
+    - name: replace
       lineinfile:
         path: /etc/selinux/config
-        regexp: '^SELINUX='
-        line: SELINUX=enforcing
+        regexp: '^Welcome'
+        line: WOW=enforcing
