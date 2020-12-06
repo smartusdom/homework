@@ -1,4 +1,3 @@
-version: '3.8'
 nexus:
     image: sonatype/nexus3
     ports: 
