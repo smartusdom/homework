@@ -1,0 +1,32 @@
+pipeline {
+    agent {
+    docker {
+        image 'myweb:1.2'
+        registryUrl 'http://20.52.232.49:8123'
+        registryCredentialsId '022e420c-1f04-4ae4-b8c8-586ba0a3ef95'
+    }
+   }
+    tools {
+        maven "m3"
+    }
+    
+    stages {
+
+        stage ("git clone") {
+            steps {
+                git 'https://github.com/smartusdom/boxfuse.git'
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('Make docker image') {
+            steps {
+                sh 'docker build --tag=1.3 .'
+                sh '''docker tag 1.3 20.52.232.49:8123/myweb:1.3 && docker push 20.52.232.49:8123/myweb:1.3'''
+           }
+        }
+    }   
+}
