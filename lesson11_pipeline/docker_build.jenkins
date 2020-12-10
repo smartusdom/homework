@@ -1,11 +1,9 @@
 pipeline {
-    agent { 
-        label 'master'
-        }
+    agent any
     
     stages {
 
-        stage("create docker image") {
+        stage("create docker image from Dockerfile") {
             steps {
                 echo " ============== start building image =================="
                 dir ('lesson11_pipeline/tools') {
