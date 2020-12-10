@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Make docker image') {
             steps {
-                sh 'docker build --tag=1.1 .'
+                sh 'docker build -t mymaven:1.1 .'
                 sh '''docker tag mymaven:1.1 20.52.232.49:8123/mymaven:1.1 && docker push 20.52.232.49:8123/mymaven:1.1'''
            }
         }
