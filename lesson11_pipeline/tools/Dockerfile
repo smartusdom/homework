@@ -13,4 +13,5 @@ RUN apt-get install docker-ce docker-ce-cli containerd.io
 # Clear cache
 RUN apt-get clean
 
-CMD tail -f /dev/null
+CMD ["mvn package"]
+#CMD tail -f /dev/null
