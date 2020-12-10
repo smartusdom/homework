@@ -1,0 +1,17 @@
+pipeline {
+    agent { 
+        label 'master'
+        }
+    
+    stages {
+
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('lesson11_pipeline/tools') {
+                	sh 'docker build -t myweb:latest . '
+                }
+            }
+        }
+    }
+}

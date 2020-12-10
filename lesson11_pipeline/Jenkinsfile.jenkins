@@ -1,0 +1,27 @@
+pipeline {
+  
+  agent {
+    docker { 
+        image '20.52.232.49:8123/myweb:1.2'
+        args '-v /var/run/docker.sock:/var/run/docker.sock -u root:docker'
+    }
+  }
+     
+    stages {
+        stage ("APP source") {
+            steps {
+                git 'https://github.com/smartusdom/boxfuse.git'
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage ('deploy') {
+            steps {
+                deploy adapters: [tomcat8(credentialsId: '2ab478d1-cb69-4890-bca6-639191def80b', path: '', url: 'http://20.52.233.144:8080/')], contextPath: 'mywebapp2', war: '**/*.war'
+            }
+        }
+    }
+}
