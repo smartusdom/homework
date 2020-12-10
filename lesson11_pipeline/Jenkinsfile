@@ -1,15 +1,11 @@
 pipeline {
     agent {
     docker {
-        image 'build_cont:1.0'
+        image 'mymaven:1.0'
         registryUrl 'http://20.52.232.49:8123'
         registryCredentialsId '022e420c-1f04-4ae4-b8c8-586ba0a3ef95'
     }
    }
-    tools {
-        maven "m3"
-    }
-    
     stages {
 
         stage ("git clone") {
@@ -25,7 +21,7 @@ pipeline {
         stage('Make docker image') {
             steps {
                 sh 'docker build --tag=1.1 .'
-                sh '''docker tag 1.1 20.52.232.49:8123/build_cont:1.1 && docker push 20.52.232.49:8123/build_cont:1.1'''
+                sh '''docker tag mymaven:1.1 20.52.232.49:8123/mymaven:1.1 && docker push 20.52.232.49:8123/mymaven:1.1'''
            }
         }
     }   
