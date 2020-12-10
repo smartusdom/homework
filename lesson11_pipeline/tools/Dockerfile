@@ -1,7 +1,7 @@
 FROM openjdk:8u275-jre-buster
 
 # Update packages list
-RUN apt-get update
+RUN apt-get update && apt-get install maven -y
 
 # Install docker latest
 RUN sudo apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
