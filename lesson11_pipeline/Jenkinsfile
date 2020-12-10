@@ -1,7 +1,7 @@
 pipeline {
     agent {
     docker {
-        image 'myweb:1.2'
+        image 'build_cont:1.0'
         registryUrl 'http://20.52.232.49:8123'
         registryCredentialsId '022e420c-1f04-4ae4-b8c8-586ba0a3ef95'
     }
@@ -24,8 +24,8 @@ pipeline {
         }
         stage('Make docker image') {
             steps {
-                sh 'docker build --tag=1.3 .'
-                sh '''docker tag 1.3 20.52.232.49:8123/myweb:1.3 && docker push 20.52.232.49:8123/myweb:1.3'''
+                sh 'docker build --tag=1.1 .'
+                sh '''docker tag 1.1 20.52.232.49:8123/build_cont:1.1 && docker push 20.52.232.49:8123/build_cont:1.1'''
            }
         }
     }   
