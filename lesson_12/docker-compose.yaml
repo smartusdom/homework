@@ -2,12 +2,12 @@
 
 version: '2'
 services:
-  app:                        # Build Application  
+  build:                        # Build Application  
     build:                    
       context: ./maven
     volumes:
       - data_volume:/srv
-    container_name: APP
+    container_name: MAVEN
 
   db:                         # MySQL Database
     image: mysql:5.7.32
@@ -24,13 +24,20 @@ services:
       MYSQL_PASSWORD: jc31d2qyy7h9jv5jn1u9uosjksxzaizw
     container_name: DBSERVER
 
-  prod:                       # Run Application
+  web:                         # Run Application
     image: tomcat:jre8-alpine
     volumes:
       - data_volume:/usr/local/tomcat/webapps
     ports:
       - "80:8080"
     container_name: WEB
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8085:8080
+    container_name: ADMINER
 
 volumes:
   data_volume:
