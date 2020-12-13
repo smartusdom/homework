@@ -1,0 +1,36 @@
+# https://hub.docker.com/layers/mysql/library/mysql/5.7.32/images/sha256-b3b2703de646600b008cbb2de36b70b21e51e7e93a7fca450d2b08151658b2dd?context=explore
+
+version: '2'
+services:
+  app:                        # Build Application  
+    build:                    
+      context: ./maven
+    volumes:
+      - data_volume:/srv
+    container_name: APP
+
+  db:                         # MySQL Database
+    image: mysql:5.7.32
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db:/var/lib/mysql
+    restart: always
+    ports:
+      - 8514:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: dbpassword
+      MYSQL_DATABASE: dd
+      MYSQL_USER: acp4pogynvaeidfj
+      MYSQL_PASSWORD: jc31d2qyy7h9jv5jn1u9uosjksxzaizw
+    container_name: DBSERVER
+
+  prod:                       # Run Application
+    image: tomcat:jre8-alpine
+    volumes:
+      - data_volume:/usr/local/tomcat/webapps
+    ports:
+      - "80:8080"
+    container_name: WEB
+
+volumes:
+  data_volume:
