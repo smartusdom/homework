@@ -1,6 +1,6 @@
 # https://hub.docker.com/layers/mysql/library/mysql/5.7.32/images/sha256-b3b2703de646600b008cbb2de36b70b21e51e7e93a7fca450d2b08151658b2dd?context=explore
 
-version: '2'
+version: '3'
 services:
   build:                        # Build Application  
     build:                    
@@ -31,8 +31,7 @@ services:
     ports:
       - "80:8080"
     container_name: WEB
-    links:
-      - db
+    
   
   adminer:
     image: adminer
