@@ -15,6 +15,7 @@ resource "aws_instance" "vm1" {
               cd /root
               git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello
               mvn package -f /root/boxfuse-sample-java-war-hello/pom.xml
+              
               EOF
 }
 
@@ -29,14 +30,6 @@ resource "aws_instance" "vm2" {
               apt install default-jre -y
               apt install tomcat9 -y
               EOF
-}
-
-resource "aws_s3_bucket" "b" {
-  bucket = "main.smartusdom.ru"
-  acl    = "public-read"
-  website {
-    index_document = "index.html"
-  } 
 }
 
 resource "aws_security_group" "instance" {
