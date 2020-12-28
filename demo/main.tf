@@ -16,7 +16,7 @@ resource "aws_instance" "develop" {
   #            sudo apt install docker.io -y
   #            EOF
   provisioner "local-exec" {
-    command = "echo [dev]\n ${aws_instance.develop.public_ip} >> hosts"
+    command = "echo ${aws_instance.develop.public_ip} >> hosts"
   }
 }
 
@@ -34,7 +34,7 @@ resource "aws_instance" "web" {
   #            sudo apt install docker.io -y
   #            EOF
   provisioner "local-exec" {
-    command = "\n echo [web]\n ${aws_instance.web.public_ip} >> hosts"
+    command = "echo ${aws_instance.web.public_ip} >> hosts"
   }
 }
 
