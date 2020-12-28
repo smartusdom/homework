@@ -16,7 +16,25 @@ resource "aws_instance" "develop" {
   #            sudo apt install docker.io -y
   #            EOF
   provisioner "local-exec" {
-    command = "echo ${aws_instance.develop.public_ip} >> hosts"
+    command = "echo ${aws_instance.develop.public_ip} >> /ansible/hosts"
+  }
+}
+
+resource "aws_instance" "web" {
+  ami = "ami-0e1ce3e0deb8896d2"
+  instance_type = "t2.micro"
+  key_name      = "test"
+  vpc_security_group_ids = [aws_security_group.instance.id]
+  #user_data = <<-EOF
+  #            #!/bin/bash
+  #            sudo apt-get update
+  #            sudo apt install python -y
+  #            sudo apt install python-pip -y
+  #            pip install boto boto3
+  #            sudo apt install docker.io -y
+  #            EOF
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.web.public_ip} >> /ansible/hosts"
   }
 }
 
